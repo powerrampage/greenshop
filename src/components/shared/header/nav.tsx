@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ComponentProps } from "react";
 
 const links = [
   { label: "Shop", href: "/shop" },
@@ -10,12 +11,18 @@ const links = [
   { label: "Blogs", href: "/blogs" },
 ];
 
-export default () => {
+export default ({
+  navProps,
+  ulProps,
+}: {
+  navProps?: ComponentProps<"nav">;
+  ulProps?: ComponentProps<"ul">;
+}) => {
   const pathname = usePathname();
 
   return (
-    <nav>
-      <ul className="flex gap-12">
+    <nav {...navProps}>
+      <ul {...ulProps} className={cn("flex gap-12", ulProps?.className)}>
         {links.map(({ label, href }) => {
           const isActive = pathname.startsWith(href);
 

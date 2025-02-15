@@ -32,8 +32,8 @@ export default function Hero() {
           </CarouselItem>
         </CarouselContent>
         <CarouselDots className="pb-4" />
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="max-lg:hidden" />
+        <CarouselNext className="max-lg:hidden" />
       </Carousel>
     </section>
   );
@@ -41,12 +41,12 @@ export default function Hero() {
 
 function Content() {
   return (
-    <section className="grid grid-cols-[55%_45%] items-center">
-      <div className="text-base pl-10">
+    <section className="grid items-center md:grid-cols-[60%_40%] max-md:py-8 max-md:relative">
+      <div className="text-base pl-10 max-lg:pl-4 max-md:relative max-md:z-[2] max-md:px-4">
         <h5 className="uppercase font-medium text-sm tracking-widest mb-1">
           Welcome to GreenShop
         </h5>
-        <h1 className="font-black uppercase text-7xl mb-[0.071em]">
+        <h1 className="font-black uppercase text-7xl max-lg:text-6xl max-sm:text-4xl mb-[0.071em]">
           Let’s Make a Better{" "}
           <mark className="text-primary bg-[transparent]">Planet</mark>
         </h1>
@@ -56,15 +56,16 @@ function Content() {
           favorite plants!
         </p>
 
-        <Button className="px-7 mt-11">SHOP NOW</Button>
+        <Button className="px-7 mt-11 max-sm:mt-6">SHOP NOW</Button>
       </div>
-      <div className="flex items-end relative">
-        <div className="absolute left-12 bottom-9">
+      <div className="flex items-end md:relative max-md:opacity-20">
+        <div className="md:absolute left-12 bottom-9 max-lg:left-2">
           <Image
             src="/images/flower-small.png"
             alt="Small Flower"
             width={135}
             height={135}
+            className="max-md:absolute max-md:right-40 max-md:bottom-0 max-sm:hidden"
           />
         </div>
         <Image
@@ -72,7 +73,7 @@ function Content() {
           alt="Big Flower"
           width={480}
           height={450}
-          className="h-[450px]"
+          className="h-[450px] max-lg:h-[400px] max-md:absolute max-md:-right-14 max-md:-bottom-8 max-sm:-left-30"
         />
       </div>
     </section>
