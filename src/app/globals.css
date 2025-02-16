@@ -154,7 +154,7 @@
     @apply border-border;
   }
   body {
-    @apply text-base font-cerapro bg-background text-foreground;
+    @apply font-cerapro bg-background text-foreground;
   }
 }
 
