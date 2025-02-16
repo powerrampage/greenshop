@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const SuperSale: FC = () => {
   return (
-    <div className="-mx-[31px]">
+    <div>
       <Image
         src="/images/super-sale-banner.png"
         alt="Super Sale"

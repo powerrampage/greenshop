@@ -11,5 +11,11 @@
 }
 
 .product-card-actions {
-  @apply absolute flex items-center gap-2 transition-all bottom-2 md:-bottom-2 md:opacity-0 md:invisible;
+  @apply absolute flex items-center gap-2 transition-all bottom-2;
+}
+
+@media (any-hover: hover) {
+  .product-card-actions {
+    @apply -bottom-2 opacity-0 invisible;
+  }
 }

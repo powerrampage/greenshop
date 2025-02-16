@@ -9,6 +9,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { SheetTrigger } from "@/components/ui/sheet";
+import { Filter } from "lucide-react";
 
 const types = [
   { id: 1, label: "All Plants" },
@@ -27,8 +29,8 @@ export default function Headline() {
   const [sortBy, setSortBy] = useState("0");
 
   return (
-    <header className="flex items-center justify-between gap-2 mb-8">
-      <ul className="flex items-center gap-9">
+    <header className="flex items-center justify-between gap-5 mb-8 max-sm:justify-center max-sm:flex-wrap max-sm:mb-4">
+      <ul className="flex items-center gap-9 max-sm:justify-center">
         {types.map(({ id, label }) => {
           const isActive = id === type;
 
@@ -70,6 +72,9 @@ export default function Headline() {
             })}
           </SelectContent>
         </Select>
+        <SheetTrigger className="md:hidden p-[6.5px] border-input border-[1px] rounded-sm">
+          <Filter />
+        </SheetTrigger>
       </div>
     </header>
   );
