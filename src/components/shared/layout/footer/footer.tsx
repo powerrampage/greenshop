@@ -95,11 +95,36 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { id: 1, icon: <Facebook size={16} />, href: "#" },
-  { id: 2, icon: <Instagram size={16} />, href: "#" },
-  { id: 3, icon: <Twitter size={16} />, href: "#" },
-  { id: 4, icon: <Linkedin size={16} />, href: "#" },
-  { id: 5, icon: <Youtube size={16} />, href: "#" },
+  {
+    id: 1,
+    icon: <Facebook size={16} />,
+    href: "https://www.facebook.com/power.rampage.56/",
+    label: "Visit Facebook",
+  },
+  {
+    id: 2,
+    icon: <Instagram size={16} />,
+    href: "https://www.instagram.com/kyotyt/",
+    label: "Visit Instagram",
+  },
+  {
+    id: 3,
+    icon: <Twitter size={16} />,
+    href: "https://x.com/P0WERRAMPAGE",
+    label: "Visit Twitter",
+  },
+  {
+    id: 4,
+    icon: <Linkedin size={16} />,
+    href: "https://www.linkedin.com/in/mironshokh-shamsiev-300b27222/",
+    label: "Visit Linkedin",
+  },
+  {
+    id: 5,
+    icon: <Youtube size={16} />,
+    href: "https://www.youtube.com/@powerrampage",
+    label: "Visit Youtube",
+  },
 ];
 
 const paymentMethods = [
@@ -193,7 +218,7 @@ export function Footer() {
       <div className="ui-container py-8 bg-overlay border-b border-b-primary/20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-sm:gap-2">
           {footerLinks.map((category) => (
-            <div key={category.id} className="space-y-4">
+            <nav key={category.id} className="space-y-4">
               <h4 className="font-bold text-lg">{category.title}</h4>
               <ul className="space-y-2">
                 {category.links.map((link, index) => (
@@ -207,7 +232,7 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
 
           {/* Social media and payment methods */}
@@ -219,6 +244,8 @@ export function Footer() {
                   key={social.id}
                   href={social.href}
                   className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary"
+                  title={social.label}
+                  aria-label={social.label}
                 >
                   {social.icon}
                 </Link>

@@ -1,17 +1,17 @@
-import Catalog from "./@catalog/page";
-import Hero from "./@hero/page";
-import OurPosts from "./@our-posts/page";
-import Recommendation from "./@recommendation/page";
+import Hero from "./_sections/hero/page";
+import Catalog from "./_sections/catalog/page";
+import Recommendation from "./_sections/recommendation/page";
+import OurPosts from "./_sections/our-posts/page";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="text-primary">
+    <main>
       <div className="ui-container">
         <Hero />
         <Catalog />
         <Recommendation />
         <OurPosts />
       </div>
-    </div>
+    </main>
   );
 }

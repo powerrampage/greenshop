@@ -1,3 +1,3 @@
-export default function Shop() {
-  return <div className="">adasdsa</div>;
+export default function Page() {
+  return <div className="">Shop</div>;
 }

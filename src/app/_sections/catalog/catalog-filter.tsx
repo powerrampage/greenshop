@@ -29,30 +29,32 @@ export default function CatalogFilter() {
 
   return (
     <div className="py-3 px-4 bg-overlay">
-      <h4 className="text-lg mb-2 font-bold">Categories</h4>
+      <h2 className="text-2xl mb-4 font-bold">Filters</h2>
+
+      <h3 className="text-lg mb-2 font-bold">Categories</h3>
 
       <ul className="pl-3 pr-1 mb-9">
         {categories.map(({ label, count, id }) => {
           const isActive = category === id;
 
           return (
-            <li
-              role="button"
-              key={id}
-              onClick={() => setCategory(id)}
-              className={cn(
-                "flex items-center justify-between gap-2 text-[0.938rem] leading-9 my-1",
-                { "font-bold text-primary": isActive }
-              )}
-            >
-              <p>{label}</p>
-              <div>({count})</div>
+            <li key={id} className="my-1">
+              <button
+                onClick={() => setCategory(id)}
+                className={cn(
+                  "flex items-center justify-between gap-2 text-[0.938rem] leading-9 w-full text-left",
+                  { "font-bold text-primary": isActive }
+                )}
+              >
+                {label}
+                <span>({count})</span>
+              </button>
             </li>
           );
         })}
       </ul>
 
-      <h4 className="text-lg mb-5 font-bold">Price Range</h4>
+      <h3 className="text-lg mb-5 font-bold">Price Range</h3>
       <div className="pl-3 mb-11">
         <Slider
           value={range}
@@ -71,23 +73,23 @@ export default function CatalogFilter() {
         <Button size="lg">Filter</Button>
       </div>
 
-      <h4 className="text-lg mb-2 font-bold">Size</h4>
+      <h3 className="text-lg mb-2 font-bold">Size</h3>
       <ul className="pl-3 pr-1 pb-2">
         {sizes.map(({ label, count, id }) => {
           const isActive = size === id;
 
           return (
-            <li
-              role="button"
-              key={id}
-              onClick={() => (isActive ? setSize(null) : setSize(id))}
-              className={cn(
-                "flex items-center justify-between gap-2 text-[0.938rem] leading-9 my-1",
-                { "font-bold text-primary": isActive }
-              )}
-            >
-              <p>{label}</p>
-              <div>({count})</div>
+            <li key={id} className="my-1">
+              <button
+                onClick={() => (isActive ? setSize(null) : setSize(id))}
+                className={cn(
+                  "flex items-center justify-between gap-2 text-[0.938rem] leading-9 w-full text-left",
+                  { "font-bold text-primary": isActive }
+                )}
+              >
+                {label}
+                <span>({count})</span>
+              </button>
             </li>
           );
         })}

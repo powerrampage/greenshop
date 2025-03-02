@@ -282,7 +282,7 @@ const CarouselDots = React.forwardRef<
     return (
       <div
         ref={ref}
-        className={`flex justify-center gap-2 ${props.className ?? ""}`}
+        className={`flex justify-center gap-4 ${props.className ?? ""}`}
       >
         {Array.from({ length: numberOfSlides }, (_, i) => (
           <Button
@@ -292,7 +292,9 @@ const CarouselDots = React.forwardRef<
             })}
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => api?.scrollTo(i)}
-          />
+          >
+            <span className="absolute inset-0 w-6 h-6"></span>
+          </Button>
         ))}
       </div>
     );

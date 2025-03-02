@@ -37,13 +37,13 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
           </div>
         )}
       </div>
-      <h5 className="text-dark mb-[0.375em]">{props.title}</h5>
+      <h4 className="text-dark mb-[0.375em]">{props.title}</h4>
       <div className="flex items-center gap-4">
         <div className="text-primary text-lg font-bold">
           ${props.price.toFixed(2)}
         </div>
-        {props.oldPrice && (
-          <s className="text-[#A5A5A5] text-lg">${props.oldPrice.toFixed(2)}</s>
+        {!!props.oldPrice && (
+          <s className="text-[#757575] text-lg">${props.oldPrice.toFixed(2)}</s>
         )}
       </div>
     </Link>

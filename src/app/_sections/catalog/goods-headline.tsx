@@ -35,19 +35,16 @@ export default function Headline() {
           const isActive = id === type;
 
           return (
-            <li
-              key={id}
-              role="button"
-              onClick={() => setType(id)}
-              className={cn(
-                "text-[0.938rem] hover:text-primary transition-colors",
-                {
+            <li key={id} className="text-[0.938rem]">
+              <button
+                onClick={() => setType(id)}
+                className={cn("hover:text-primary transition-colors", {
                   "text-primary border-b-2 border-b-primary font-bold":
                     isActive,
-                }
-              )}
-            >
-              {label}
+                })}
+              >
+                {label}
+              </button>
             </li>
           );
         })}
@@ -59,7 +56,7 @@ export default function Headline() {
           defaultValue={sortBy}
           onValueChange={(value) => setSortBy(value)}
         >
-          <SelectTrigger className="w-32">
+          <SelectTrigger className="w-32" title="Select sort type">
             <SelectValue placeholder="Sort By" />
           </SelectTrigger>
           <SelectContent>
@@ -72,7 +69,10 @@ export default function Headline() {
             })}
           </SelectContent>
         </Select>
-        <SheetTrigger className="md:hidden p-[6.5px] border-input border-[1px] rounded-sm">
+        <SheetTrigger
+          className="md:hidden p-[6.5px] border-input border-[1px] rounded-sm"
+          title="Filter products"
+        >
           <Filter />
         </SheetTrigger>
       </div>

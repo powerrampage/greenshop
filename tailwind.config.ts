@@ -5,7 +5,7 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     colors: {
-      primary: "#46A358",
+      primary: "#378046",
       tertiary: "#727272",
       dark: "#3D3D3D",
       overlay: "#FBFBFB",

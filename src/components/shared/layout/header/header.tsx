@@ -36,6 +36,7 @@ const Header: FC = () => {
                 size="sm"
                 variant="link"
                 className="p-1 text-dark hover:text-primary h-auto"
+                title="Search by products"
               >
                 <Search />
               </Button>
@@ -43,11 +44,12 @@ const Header: FC = () => {
                 size="sm"
                 variant="link"
                 className="p-1 text-dark hover:text-primary h-auto"
+                title="Go to shopping cart"
               >
                 <ShoppingCart />
               </Button>
 
-              <SheetTrigger className="sm:hidden">
+              <SheetTrigger className="sm:hidden" title="Open a menu">
                 <Menu />
               </SheetTrigger>
 
