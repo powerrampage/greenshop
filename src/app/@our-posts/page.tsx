@@ -35,7 +35,7 @@ const posts = [
 
 export default function OurPosts() {
   return (
-    <section className="mt-32 mb-24">
+    <section className="mt-32 mb-24 max-sm:my-16">
       <h3 className="font-bold text-3xl text-dark text-center mb-[0.5em]">
         Our Blog Posts
       </h3>
@@ -44,7 +44,7 @@ export default function OurPosts() {
         plants.
       </p>
 
-      <div className="grid grid-cols-[repeat(auto-fit,_minmax(13rem,_1fr))] gap-11 max-xl:gap-5 max-md:grid-cols-2 max-sm:grid-cols-1">
+      <div className="grid grid-cols-4 gap-11 max-xl:gap-5 max-md:grid-cols-2 max-sm:grid-cols-1">
         {posts.map((post) => {
           return (
             <PostCard

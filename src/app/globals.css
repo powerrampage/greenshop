@@ -154,7 +154,7 @@
     @apply border-border;
   }
   body {
-    @apply font-cerapro bg-background;
+    @apply font-cerapro bg-background overflow-x-hidden;
   }
 }
 
