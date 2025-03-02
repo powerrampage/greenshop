@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-cerapro antialiased text-dark">
+      <body className="font-cerapro antialiased text-dark grid grid-rows-[auto_1fr_auto]">
         <Providers>
           <Header />
           {children}

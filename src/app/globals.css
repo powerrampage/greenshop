@@ -156,6 +156,10 @@
   body {
     @apply font-cerapro bg-background overflow-x-hidden;
   }
+  html,
+  body {
+    @apply h-full;
+  }
 }
 
 @layer base {
