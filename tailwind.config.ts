@@ -7,7 +7,7 @@ export default {
     colors: {
       primary: "#46A358",
       tertiary: "#727272",
-      base: "#3D3D3D",
+      dark: "#3D3D3D",
       overlay: "#FBFBFB",
     },
     fontFamily: {

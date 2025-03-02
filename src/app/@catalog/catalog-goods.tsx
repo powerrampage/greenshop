@@ -9,7 +9,7 @@ const products = [
     title: "African Violet",
     price: 199.0,
     oldPrice: 229.0,
-    disCount: { percent: 75 },
+    discount: { percent: 75 },
   },
   { title: "Blushing Bromeliad", price: 199.0 },
   { title: "African Violet", price: 199.0 },

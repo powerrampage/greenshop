@@ -5,17 +5,30 @@ import { ComponentProps, ReactNode } from "react";
 
 export default function Actions() {
   const actions: {
+    title: string;
     icon: ReactNode;
     onClick: ComponentProps<"button">["onClick"];
   }[] = [
-    { icon: <ShoppingCart />, onClick: (event) => event.stopPropagation() },
-    { icon: <Heart />, onClick: (event) => event.stopPropagation() },
-    { icon: <Search />, onClick: (event) => event.stopPropagation() },
+    {
+      title: "Add to cart",
+      icon: <ShoppingCart />,
+      onClick: (event) => event.stopPropagation(),
+    },
+    {
+      title: "Add to favorites",
+      icon: <Heart />,
+      onClick: (event) => event.stopPropagation(),
+    },
+    {
+      title: "Search this product",
+      icon: <Search />,
+      onClick: (event) => event.stopPropagation(),
+    },
   ];
 
   return (
     <div className="product-card-actions">
-      {actions.map(({ icon, onClick }, index) => {
+      {actions.map(({ title, icon, onClick }, index) => {
         return (
           <Button
             key={index}
@@ -23,6 +36,7 @@ export default function Actions() {
             variant="outline"
             className="p-2 hover:text-primary"
             onClick={onClick}
+            title={title}
           >
             {icon}
           </Button>

@@ -96,11 +96,11 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
+  --foreground: 0 0% 23.9%;
   --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
+  --card-foreground: 0 0% 23.9%;
   --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
+  --popover-foreground: 0 0% 23.9%;
   --primary: 132 40% 46%;
   --primary-foreground: 0 0% 100%;
   --secondary: 240 4.8% 95.9%;
@@ -154,7 +154,7 @@
     @apply border-border;
   }
   body {
-    @apply font-cerapro bg-background text-foreground;
+    @apply font-cerapro bg-background;
   }
 }
 

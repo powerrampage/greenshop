@@ -19,3 +19,9 @@
     @apply -bottom-2 opacity-0 invisible;
   }
 }
+
+.product-card-discount-badge {
+  @apply w-20 h-7 bg-primary absolute font-medium text-base flex justify-center items-center text-primary-foreground
+    top-3
+    left-0;
+}

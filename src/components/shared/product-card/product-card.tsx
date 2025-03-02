@@ -28,8 +28,16 @@ export const ProductCard: FC<ProductCardProps> = (props) => {
           className="object-cover h-full w-full"
         />
         <Actions />
+        {!!props?.discount?.percent && (
+          <div
+            className="product-card-discount-badge"
+            title={`Discount ${props.discount.percent}% off`}
+          >
+            {props.discount.percent}% OFF
+          </div>
+        )}
       </div>
-      <h5 className="text-base mb-[0.375em]">{props.title}</h5>
+      <h5 className="text-dark mb-[0.375em]">{props.title}</h5>
       <div className="flex items-center gap-4">
         <div className="text-primary text-lg font-bold">
           ${props.price.toFixed(2)}

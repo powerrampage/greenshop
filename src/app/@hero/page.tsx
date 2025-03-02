@@ -13,7 +13,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="my-3 bg-overlay">
+    <section className="my-3 bg-overlay dark:bg-[transparent]">
       <Carousel
         opts={{
           align: "start",
@@ -42,7 +42,7 @@ export default function Hero() {
 function Content() {
   return (
     <section className="grid items-center md:grid-cols-[60%_40%] max-md:py-8 max-md:relative">
-      <div className="text-base pl-10 max-lg:pl-4 max-md:relative max-md:z-[2] max-md:px-4">
+      <div className="text-dark pl-10 max-lg:pl-4 max-md:relative max-md:z-[2] max-md:px-4">
         <h5 className="uppercase font-medium text-sm tracking-widest mb-1">
           Welcome to GreenShop
         </h5>

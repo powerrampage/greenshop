@@ -35,14 +35,14 @@ const Header: FC = () => {
               <Button
                 size="sm"
                 variant="link"
-                className="p-1 text-base hover:text-primary h-auto"
+                className="p-1 text-dark hover:text-primary h-auto"
               >
                 <Search />
               </Button>
               <Button
                 size="sm"
                 variant="link"
-                className="p-1 text-base hover:text-primary h-auto"
+                className="p-1 text-dark hover:text-primary h-auto"
               >
                 <ShoppingCart />
               </Button>
