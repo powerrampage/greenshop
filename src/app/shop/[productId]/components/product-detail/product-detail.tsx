@@ -94,7 +94,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             onDecrement={() => setQuantity((prev) => Math.max(1, prev - 1))}
           />
 
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="grid grid-cols-[1fr_1fr_auto] gap-3">
             <Button
               size="lg"
               className="flex-1 bg-primary hover:bg-primary/90"

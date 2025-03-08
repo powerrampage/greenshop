@@ -37,7 +37,7 @@ export default function ProductGallery({
           alt={`${productName} - Image ${selectedImage + 1}`}
           fill
           className={cn(
-            "object-cover transition-all duration-300",
+            "object-cover transition-all duration-300 scale-75",
             isZoomed && "scale-125"
           )}
           sizes="(max-width: 768px) 100vw, 50vw"
