@@ -7,8 +7,8 @@ export default {
     colors: {
       primary: "#378046",
       tertiary: "#727272",
-      dark: "#3D3D3D",
-      overlay: "#FBFBFB",
+      dark: "hsl(var(--color-dark))",
+      overlay: "hsl(var(--color-overlay))",
     },
     fontFamily: {
       cerapro: "CeraPro, sans-serif",
