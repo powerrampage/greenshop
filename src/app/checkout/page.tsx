@@ -22,7 +22,7 @@ export default async function CheckoutPage() {
   }
 
   return (
-    <main className="py-8">
+    <main className="py-8 mb-32 max-md:mb-5">
       <div className="ui-container">
         <h1 className="sr-only">Checkout</h1>
 

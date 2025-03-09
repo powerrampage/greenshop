@@ -4,12 +4,6 @@ export default {
   darkMode: ["class"],
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
-    colors: {
-      primary: "#378046",
-      tertiary: "#727272",
-      dark: "hsl(var(--color-dark))",
-      overlay: "hsl(var(--color-overlay))",
-    },
     fontFamily: {
       cerapro: ["var(--font-cerapro)"],
     },
@@ -20,6 +14,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        tertiary: "#727272",
+        dark: "hsl(var(--color-dark))",
+        overlay: "hsl(var(--color-overlay))",
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

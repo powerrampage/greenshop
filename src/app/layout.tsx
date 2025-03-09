@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { PropsWithChildren } from "react";
-import { Footer, Header } from "@/components/shared";
+import { Auth, Footer, Header } from "@/components/shared";
 import Providers from "@/providers";
 import { cn } from "@/lib/utils";
 import ceraPro from "@/assets/fonts/fonts";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "GreenShop",
@@ -25,6 +26,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <Header />
           {children}
           <Footer />
+          <Auth.Modal />
+          <Toaster />
         </Providers>
       </body>
     </html>

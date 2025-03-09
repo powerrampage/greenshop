@@ -18,7 +18,7 @@ export interface ProductCardProps {
 
 export const ProductCard: FC<ProductCardProps> = (props) => {
   return (
-    <Link href={`/shops/${props.id}`} className="product-card">
+    <Link href={`/shop/${props.id}`} className="product-card">
       <div className="product-card-image">
         <Image
           src={props.image}
