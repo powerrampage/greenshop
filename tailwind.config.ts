@@ -11,7 +11,7 @@ export default {
       overlay: "hsl(var(--color-overlay))",
     },
     fontFamily: {
-      cerapro: "CeraPro, sans-serif",
+      cerapro: ["var(--font-cerapro)"],
     },
     extend: {
       borderRadius: {

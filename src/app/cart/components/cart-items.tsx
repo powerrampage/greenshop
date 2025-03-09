@@ -139,7 +139,7 @@ export default function CartItems({ items }: CartItemsProps) {
                   </Button>
                 </div>
               </TableCell>
-              <TableCell className="text-right font-medium text-primary text-base font-bold">
+              <TableCell className="text-right text-primary text-base font-bold">
                 <span id={`product-${item.id}-total`}>
                   ${(item.price * item.quantity).toFixed(2)}
                 </span>
