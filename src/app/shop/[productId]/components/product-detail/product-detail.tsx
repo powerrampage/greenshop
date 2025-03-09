@@ -56,16 +56,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   return (
     <section className="ui-container mx-auto px-4 py-8 md:py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-        {/* Product Gallery */}
         <ProductGallery images={product.images} productName={product.name} />
 
-        {/* Product Details */}
         <div className="space-y-6">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">
               {product.name}
             </h1>
-            <div className="flex items-center justify-between mt-2">
+            <div className="flex items-center justify-between max-sm:flex-wrap gap-3 mt-2">
               <p className="text-2xl font-bold text-primary">
                 ${product.price.toFixed(2)}
               </p>
@@ -94,10 +92,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             onDecrement={() => setQuantity((prev) => Math.max(1, prev - 1))}
           />
 
-          <div className="grid grid-cols-[1fr_1fr_auto] gap-3">
+          <div className="flex max-sm:flex-wrap gap-3">
             <Button
               size="lg"
-              className="flex-1 bg-primary hover:bg-primary/90"
+              className="flex-auto bg-primary hover:bg-primary/90"
               onClick={handleBuyNow}
             >
               BUY NOW
@@ -105,7 +103,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             <Button
               size="lg"
               variant="outline"
-              className="flex-1 border-primary text-primary hover:bg-primary/10"
+              className="flex-auto border-primary text-primary hover:bg-primary/10"
               onClick={handleAddToCart}
             >
               ADD TO CART
@@ -114,7 +112,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               size="icon"
               variant="outline"
               className={cn(
-                "border-primary",
+                "border-primary h-11 w-11",
                 inWishlist
                   ? "bg-primary/10 text-primary"
                   : "text-muted-foreground"

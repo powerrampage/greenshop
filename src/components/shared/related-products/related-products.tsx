@@ -6,6 +6,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
+  CarouselDots,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
@@ -45,7 +46,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
             {products.map((product) => (
               <CarouselItem
                 key={product.id}
-                className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                className="pl-4 basis-1/2 lg:basis-1/3 xl:basis-1/4"
               >
                 <Card className="h-full">
                   <CardContent className="p-4">
@@ -77,7 +78,8 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden sm:block">
+          <CarouselDots className="pt-4" />
+          <div className="hidden lg:block">
             <CarouselPrevious className="absolute -left-12 top-1/2" />
             <CarouselNext className="absolute -right-12 top-1/2" />
           </div>

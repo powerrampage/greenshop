@@ -21,7 +21,6 @@ export default function ProductGallery({
 
   return (
     <div className="space-y-4">
-      {/* Main Image */}
       <div className="relative aspect-square overflow-hidden rounded-lg border bg-background">
         <Button
           variant="ghost"
@@ -45,9 +44,8 @@ export default function ProductGallery({
         />
       </div>
 
-      {/* Thumbnails */}
       <div
-        className="flex space-x-2 overflow-x-auto p-1"
+        className="flex space-x-2 overflow-x-auto p-1 pb-2"
         style={{ scrollbarWidth: "thin" }}
       >
         {images.map((image, index) => (

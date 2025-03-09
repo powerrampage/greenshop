@@ -292,8 +292,8 @@ export default function ProductReviews({
       <div className="space-y-8">
         {optimisticReviews.filter(Boolean).map((review) => (
           <div key={review.id} className="space-y-4">
-            <div className="flex items-start gap-4">
-              <Avatar>
+            <div className="flex items-start gap-4 max-sm:gap-2">
+              <Avatar className="max-sm:h-8 max-sm:w-8">
                 <AvatarImage
                   src={`/placeholder-user.jpg`}
                   alt={review.userName}
@@ -323,7 +323,9 @@ export default function ProductReviews({
                   </time>
                 </div>
 
-                <p className="text-muted-foreground">{review.comment}</p>
+                <p className="text-muted-foreground max-sm:text-sm">
+                  {review.comment}
+                </p>
 
                 <Button
                   variant="ghost"
@@ -380,8 +382,11 @@ export default function ProductReviews({
             {review.replies && review.replies.length > 0 && (
               <div className="ml-12 space-y-4">
                 {review.replies.map((reply) => (
-                  <div key={reply.id} className="flex items-start gap-4">
-                    <Avatar>
+                  <div
+                    key={reply.id}
+                    className="flex items-start gap-4 max-sm:gap-2"
+                  >
+                    <Avatar className="max-sm:h-8 max-sm:w-8">
                       <AvatarImage
                         src={`/placeholder-user.jpg`}
                         alt={reply.userName}
@@ -398,7 +403,9 @@ export default function ProductReviews({
                           {formatDate(reply.date)}
                         </time>
                       </div>
-                      <p className="text-muted-foreground">{reply.comment}</p>
+                      <p className="text-muted-foreground max-sm:text-sm">
+                        {reply.comment}
+                      </p>
                     </div>
                   </div>
                 ))}

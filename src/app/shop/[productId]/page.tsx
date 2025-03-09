@@ -117,7 +117,7 @@ Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis f
   return (
     <>
       <ProductDetail product={product} />
-      <div className="ui-container mx-auto px-4 mb-32">
+      <div className="ui-container mx-auto px-4 mb-32 max-md:mb-5">
         <ProductAbout
           description={productDetails.description}
           roomDescriptions={productDetails.roomDescriptions}
@@ -125,7 +125,7 @@ Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis f
         />
       </div>
 
-      <div className="mb-32">
+      <div className="mb-32 max-md:mb-5">
         <RelatedProducts products={relatedProducts} />
       </div>
     </>
