@@ -1,6 +1,9 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { AccountSidebar } from "./components/account-sidebar";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { verify } from "jsonwebtoken";
 
 export const metadata: Metadata = {
   title: "Account | Your Store",
@@ -12,6 +15,21 @@ export default async function AccountLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("auth-token");
+
+  if (!token) {
+    redirect("/login?callbackUrl=/account");
+  }
+
+  try {
+    // Verify token
+    verify(token.value, process.env.NEXTAUTH_SECRET || "your-secret-key");
+  } catch (error) {
+    // If token is invalid, redirect to login
+    redirect("/login?callbackUrl=/account");
+  }
+
   return (
     <main className="py-8 mb-36 max-md:mb-10">
       <div className="ui-container">

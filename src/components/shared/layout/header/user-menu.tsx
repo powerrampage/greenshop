@@ -1,20 +1,20 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { redirect } from "next/navigation";
+import { useAuth } from "@/providers/auth.provider";
 
 export default () => {
-  const { data: session, status } = useSession();
+  const { loading, user } = useAuth();
 
-  if (status === "loading") return null;
+  if (loading) return null;
 
-  const isLogged = status === "authenticated" && session;
+  const isLogged = !!user;
 
-  console.log({ session, status });
+  console.log({ user });
 
   function handleLogin() {
     redirect("?auth=true&type=login");
@@ -23,11 +23,8 @@ export default () => {
   return isLogged ? (
     <Link href="/account">
       <Avatar>
-        <AvatarImage
-          src={session.user?.image as string}
-          alt={session.user?.name ?? "Avatar"}
-        />
-        <AvatarFallback>{session?.user?.name}</AvatarFallback>
+        <AvatarImage src={user?.image as string} alt={user?.name ?? "Avatar"} />
+        <AvatarFallback>{user?.name}</AvatarFallback>
       </Avatar>
     </Link>
   ) : (

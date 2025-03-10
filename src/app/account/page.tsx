@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { AccountDetails } from "./components/account-details";
+import { getCurrentUser } from "./actions";
 
 export const metadata: Metadata = {
   title: "Account Details | Your Store",
@@ -9,12 +8,12 @@ export const metadata: Metadata = {
 };
 
 export default async function AccountPage() {
-  const session = await getServerSession(authOptions);
+  const user = await getCurrentUser();
 
   return (
     <div>
       <h2 className="text-xl font-semibold mb-6">Personal Information</h2>
-      <AccountDetails user={session?.user} />
+      <AccountDetails user={user!} />
     </div>
   );
 }

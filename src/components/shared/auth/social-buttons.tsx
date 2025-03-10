@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/base";
 import { toast } from "sonner";
@@ -13,7 +12,11 @@ export function SocialButtons() {
   const handleGoogleSignIn = async () => {
     try {
       setIsGoogleLoading(true);
-      await signIn("google", { callbackUrl: "/" });
+      // In a real app, you would implement Google OAuth
+      // For demo purposes, we'll just show a toast
+      toast.info("Google authentication", {
+        description: "Google authentication is not implemented in this demo.",
+      });
     } catch (error) {
       toast.error("Authentication failed", {
         description: "Could not sign in with Google. Please try again.",
@@ -31,11 +34,11 @@ export function SocialButtons() {
       toast.info("Telegram authentication", {
         description: "Telegram authentication is not implemented in this demo.",
       });
-      setIsTelegramLoading(false);
     } catch (error) {
       toast.error("Authentication failed", {
         description: "Could not sign in with Telegram. Please try again.",
       });
+    } finally {
       setIsTelegramLoading(false);
     }
   };

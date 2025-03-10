@@ -12,13 +12,14 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LoginForm } from "./login-form";
 import { RegisterForm } from "./register-form";
+import { useAuth } from "@/providers/auth.provider";
 
 export function AuthModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { status } = useSession();
+  const { user } = useAuth();
 
   useEffect(() => {
     // Check if auth modal should be shown based on URL params
@@ -37,7 +38,7 @@ export function AuthModal() {
 
   // Close modal if user is authenticated
   useEffect(() => {
-    if (status === "authenticated") {
+    if (user) {
       setIsOpen(false);
       // Remove auth params from URL
       const params = new URLSearchParams(window.location.search);
@@ -50,7 +51,7 @@ export function AuthModal() {
         router.replace(newUrl);
       }
     }
-  }, [status, router]);
+  }, [user, router]);
 
   const handleOpenChange = (open: boolean) => {
     setIsOpen(open);
@@ -71,11 +72,6 @@ export function AuthModal() {
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>
-            {activeTab === "login" ? "Login" : "Register"}
-          </DialogTitle>
-        </DialogHeader>
         <Tabs
           value={activeTab}
           onValueChange={(value) => setActiveTab(value as "login" | "register")}

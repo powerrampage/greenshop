@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Icons } from "@/components/base";
 import { SocialButtons } from "./social-buttons";
-import { toast } from "sonner";
+import { useAuth } from "@/providers/auth.provider";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -28,6 +28,7 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 
 export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -40,25 +41,10 @@ export function LoginForm() {
   async function onSubmit(data: LoginFormValues) {
     setIsLoading(true);
     try {
-      const result = await signIn("credentials", {
-        email: data.email,
-        password: data.password,
-        redirect: false,
-      });
-
-      if (result?.error) {
-        toast.error("Login failed", {
-          description: "Invalid email or password. Please try again.",
-        });
-      } else {
-        toast.success("Login successful", {
-          description: "Welcome back!",
-        });
-      }
+      await login(data.email, data.password);
     } catch (error) {
-      toast.error("Something went wrong", {
-        description: "Please try again later.",
-      });
+      // Error is handled in the auth context
+      console.error("Login error:", error);
     } finally {
       setIsLoading(false);
     }

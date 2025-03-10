@@ -1,4 +1,4 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { z } from "zod";
@@ -10,12 +10,11 @@ const users = [
     name: "Demo User",
     email: "user@example.com",
     password: "password123", // In a real app, this would be hashed
-    image: "https://github.com/shadcn.png",
+    image: "https://api.dicebear.com/9.x/adventurer/svg?seed=Aidan",
   },
 ];
 
-export const authOptions: AuthOptions = {
-  session: {},
+export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
@@ -60,9 +59,9 @@ export const authOptions: AuthOptions = {
     signIn: "/", // We'll handle sign in via a modal
   },
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, token }: any) {
       if (token && session.user) {
-        // session.user.id = token.sub;
+        session.user.id = token.sub;
       }
       return session;
     },

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -17,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Icons } from "@/components/base";
 import { SocialButtons } from "./social-buttons";
-import { toast } from "sonner";
+import { useAuth } from "@/providers/auth.provider";
 
 const registerSchema = z
   .object({
@@ -35,6 +34,7 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const { register } = useAuth();
 
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -49,22 +49,10 @@ export function RegisterForm() {
   async function onSubmit(data: RegisterFormValues) {
     setIsLoading(true);
     try {
-      // In a real app, you would register the user here
-      // For demo purposes, we'll just sign in with the demo account
-      toast.success("Account created", {
-        description: "You have successfully registered. Please sign in.",
-      });
-
-      // Auto sign in after registration
-      await signIn("credentials", {
-        email: "user@example.com", // Using demo account
-        password: "password123",
-        redirect: false,
-      });
+      await register(data.username, data.email, data.password);
     } catch (error) {
-      toast.error("Registration failed", {
-        description: "Something went wrong. Please try again.",
-      });
+      // Error is handled in the auth context
+      console.error("Registration error:", error);
     } finally {
       setIsLoading(false);
     }

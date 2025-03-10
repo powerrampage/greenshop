@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { signOut } from "next-auth/react";
 import {
   User,
   MapPin,
@@ -15,6 +14,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/providers/auth.provider";
 
 const menuItems = [
   {
@@ -56,10 +56,7 @@ const menuItems = [
 
 export function AccountSidebar() {
   const pathname = usePathname();
-
-  const handleSignOut = async () => {
-    await signOut({ callbackUrl: "/" });
-  };
+  const { logout } = useAuth();
 
   return (
     <div className="space-y-1">
@@ -87,7 +84,7 @@ export function AccountSidebar() {
         <Button
           variant="ghost"
           className="w-full justify-start text-muted-foreground hover:text-foreground"
-          onClick={handleSignOut}
+          onClick={() => logout()}
         >
           <LogOut className="mr-2 h-4 w-4" />
           Logout

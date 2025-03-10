@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSession, signOut } from "next-auth/react";
 import { User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,32 +12,40 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Icons } from "@/components/base";
+import { useState } from "react";
+import { useAuth } from "@/providers/auth.provider";
 
 export function AuthButton() {
-  const { data: session, status } = useSession();
+  const { user, loading, logout } = useAuth();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleSignIn = () => {
     router.push("/?auth=true&type=login");
   };
 
-  const handleSignOut = async () => {
-    setIsLoading(true);
-    await signOut({ callbackUrl: "/" });
-    setIsLoading(false);
+  const handleLogout = async () => {
+    try {
+      setIsLoggingOut(true);
+      await logout();
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      setIsLoggingOut(false);
+    }
   };
 
-  if (status === "loading") {
+  if (loading) {
     return (
       <Button variant="ghost" size="sm" disabled>
-        <User className="h-4 w-4 mr-2" />
+        <Icons.spinner className="h-4 w-4 mr-2 animate-spin" />
         Loading...
       </Button>
     );
   }
 
-  if (status === "unauthenticated") {
+  if (!user) {
     return (
       <Button variant="ghost" size="sm" onClick={handleSignIn}>
         <User className="h-4 w-4 mr-2" />
@@ -57,13 +63,8 @@ export function AuthButton() {
           className="relative h-8 w-8 rounded-full"
         >
           <Avatar className="h-8 w-8">
-            <AvatarImage
-              src={session?.user?.image || ""}
-              alt={session?.user?.name || "User"}
-            />
-            <AvatarFallback>
-              {session?.user?.name?.charAt(0) || "U"}
-            </AvatarFallback>
+            <AvatarImage src={user.image || ""} alt={user.name || "User"} />
+            <AvatarFallback>{user.name?.charAt(0) || "U"}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -84,12 +85,16 @@ export function AuthButton() {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          onClick={handleSignOut}
-          disabled={isLoading}
+          onClick={handleLogout}
+          disabled={isLoggingOut}
           className="text-destructive focus:text-destructive"
         >
-          <LogOut className="h-4 w-4 mr-2" />
-          {isLoading ? "Signing out..." : "Sign out"}
+          {isLoggingOut ? (
+            <Icons.spinner className="h-4 w-4 mr-2 animate-spin" />
+          ) : (
+            <LogOut className="h-4 w-4 mr-2" />
+          )}
+          {isLoggingOut ? "Signing out..." : "Sign out"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
